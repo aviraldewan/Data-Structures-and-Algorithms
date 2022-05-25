@@ -7,7 +7,7 @@ using namespace std;
 class queue
 {
      int* arr;
-     int front, back;
+     int front, back; 
 public:
      queue()
      {
