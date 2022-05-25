@@ -126,7 +126,7 @@ void takeInput(Node *&root)
 Node *minVal(Node *root)
 {
 	Node *temp = root;
-	while (temp->left != NULL)
+	while (temp and temp->left != NULL)
 		temp = temp->left;
 
 	return temp;
@@ -136,7 +136,7 @@ Node *minVal(Node *root)
 Node *maxVal(Node *root)
 {
 	Node *temp = root;
-	while (temp->right != NULL)
+	while (temp and temp->right != NULL)
 		temp = temp->right;
 
 	return temp;
@@ -198,9 +198,9 @@ Node *deleteFromBST(Node *root, int val)
 		// 2 child
 		if (root->left != NULL and root->right != NULL)
 		{
-			int mini = maxVal(root->left)->data;
-			root->data = mini;
-			root->left = deleteFromBST(root->left, mini);
+			Node* temp = minVal(root->right);
+			root->data = temp->data;
+			root->right = deleteFromBST(root->right, temp->data);
 			return root;
 		}
 	}
